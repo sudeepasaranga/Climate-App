@@ -13,6 +13,8 @@ class _HomepageState extends State<Homepage> {
 
   ApiResponse? response;
   bool inProgress = false;
+  String message = "Search for the location to get weather data";
+
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +26,12 @@ class _HomepageState extends State<Homepage> {
             _buildSearchWidget(),
             const SizedBox(height: 20),
             if(inProgress)
-            CircularProgressIndicator() else _buildSearchWidget(),
+            CircularProgressIndicator() 
+            else 
+            Expanded(
+              child:  SingleChildScrollView(child:  _buildWeatherWidget())
+            ),
+           
           ],
         ),
       ),
@@ -40,9 +47,9 @@ class _HomepageState extends State<Homepage> {
     );
    }
 
-   Widget _buildSearchWidget() {
+   Widget _buildWeatherWidget() {
       if (response == null){
-        return Text("Search for the location to get weather data");
+        return Text(message);
       }else{
         return Column(
              crossAxisAlignment: CrossAxisAlignment.start,
@@ -114,10 +121,43 @@ class _HomepageState extends State<Homepage> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        _dataAndTitleWidget("title", "data"),
-                        _dataAndTitleWidget("title", "data")
+                        _dataAndTitleWidget("Humidity",
+                            response?.current?.humidity?.toString() ?? ""),
+                        _dataAndTitleWidget("Wind Speed",
+                         "${response?.current?.windKph?.toString() ?? ""} + km/h")
                       ],
-                    )
+                    ),
+
+                     Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        _dataAndTitleWidget("UV",
+                            response?.current?.uv?.toString() ?? ""),
+                        _dataAndTitleWidget("Percipitation",
+                         "${response?.current?.precipMm?.toString() ?? ""} + mm")
+                      ],
+                    ),
+
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        _dataAndTitleWidget("Local Time",
+                            response?.location?.localtime?.split(" ").last ?? ""),
+                        _dataAndTitleWidget("Local Date",
+                            response?.location?.localtime?.split(" ").first ?? ""),
+                      ],
+                    ),
+
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        _dataAndTitleWidget("Humidity",
+                            response?.current?.humidity?.toString() ?? ""),
+                        _dataAndTitleWidget("Wind Speed",
+                         "${response?.current?.windKph?.toString() ?? ""} + km/h")
+                      ],
+                    ),
+
                   ],
                 ),
               )
@@ -136,7 +176,6 @@ class _HomepageState extends State<Homepage> {
                 Text(
                   data,
                   style: const TextStyle(
-                    fontSize: 27,
                     color:Colors.black87,
                     fontWeight: FontWeight.w600,
 
@@ -166,6 +205,11 @@ class _HomepageState extends State<Homepage> {
 
        response = await WeatherApi().getCurrentWeather(location);
     }catch(e){
+      setState(() {
+        message = "Failed to get weather";
+        response = null;
+
+      });
 
     }finally{
 
