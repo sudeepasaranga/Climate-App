@@ -24,7 +24,7 @@ class _HomepageState extends State<Homepage> {
             gradient: LinearGradient(
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
-              colors: [Color(0xFF2193b0), Color(0xFF6dd5ed)],
+              colors:[Color.fromARGB(255, 57, 105, 177), Color(0xFF1976D2)],
             ),
           ),
           child: Column(
