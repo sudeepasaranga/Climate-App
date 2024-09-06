@@ -1,13 +1,14 @@
 # Weather App
 
 ## Description
-Weather App is a simple and user-friendly mobile application that allows users to search for and view current weather conditions for any location. The app displays detailed weather information such as temperature, humidity, wind speed, UV index, precipitation, and local date/time. It also includes a clean and modern UI with responsive design, as shown in the attached screenshot.
+Weather App is a simple and user-friendly mobile application that allows users to search for and view current weather conditions for any location. The app displays detailed weather information such as temperature, humidity, wind speed, UV index, precipitation, weather alerts and local date/time. It also includes a clean and modern UI with responsive design, as shown in the attached screenshot.
 
 ## Features
 - **Search Location:** Easily search for any city or location to retrieve weather data.
 - **Current Weather:** Displays the temperature, weather condition, and an icon representing the weather.
 - **Detailed Metrics:** View additional weather details like humidity, wind speed, UV index, and precipitation levels.
 - **Local Date/Time:** Shows the current local time and date for the selected location.
+- **Weather alerts:** 
 
 ## API Used
 - **WeatherAPI:** Weather data is fetched using the WeatherAPI, providing real-time weather information.
