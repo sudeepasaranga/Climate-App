@@ -8,7 +8,7 @@ class WeatherApi{
   final String baseUrl = "http://api.weatherapi.com/v1/current.json";
 
     Future<ApiResponse> getCurrentWeather(String location) async{
-        String apiUrl = "$baseUrl?Key=$apiKey&q=$location";
+        String apiUrl = "$baseUrl?Key=$apiKey&q=$location&alerts=yes";
         try{
           final responce = await http.get(Uri.parse(apiUrl));
           if(responce.statusCode==200){
