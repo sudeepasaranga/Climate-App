@@ -39,7 +39,7 @@ Weather App is a simple and user-friendly mobile application that allows users t
 1. On the homepage, type the desired location into the search bar.
 2. Press enter or click the search icon to fetch the current weather information for the location.
 
-## Screenshot
-![Weather App Screenshot 01](weather_app/assets/screenshots/1.png)
-![Weather App Screenshot 02](weather_app/assets/screenshots/2.png)
+## Screenshots
+![Screenshot 1](assets/1.png)
+![Screenshot 2](assets/2.png)
 
